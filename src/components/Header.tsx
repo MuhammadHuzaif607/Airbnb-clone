@@ -1,4 +1,11 @@
 import Link from 'next/link';
+import { Bell, User, TableOfContents } from 'lucide-react';
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from '@/components/ui/hover-card';
+import { Separator } from "@/components/ui/separator"
 const Header = () => {
   const links = [
     {
@@ -131,17 +138,17 @@ const Header = () => {
               </ul>
             </div>
           </div>
-          <div className=" lg:w-4/12 w-8/12">
+          {/* <div className=" lg:w-4/12 w-8/12">
             <div className="sign-area flex items-center justify-end gap-x-[22px]">
               <div className="icon-box lg:flex hidden"></div>
-              <div className="sign-btn lg:block hidden relative">
+              <div className="sign-btn lg:block hidden relative group">
                 <a
                   href="javascript:void(0)"
                   className="text-[16px] px-[10px] py-[5px] font-medium"
                 >
                   Sign In
                 </a>
-                <div className="two-btns absolute top-[32px] w-[132px] bg-white right-0  rounded-lg shadow-md opacity-0 z-[9] invisible duration-500 py-[15px]">
+                <div className="two-btns absolute top-[32px] w-[132px] bg-white right-0  rounded-lg shadow-md opacity-0 z-[9] invisible duration-500 py-[15px] group-hover:opacity-100 group-hover:visible ">
                   <button
                     type="button"
                     className="text-sm border-0 duration-300 flex items-center gap-x-[10px] w-full  mb-1 rounded-0 py-[5px] px-[10px] font-medium  hover:bg-secondary hover:text-primary "
@@ -199,6 +206,65 @@ const Header = () => {
               <div className="hamburger d-block d-lg-none lg:block hidden">
                 <i className="fas fa-bars"></i>
               </div>
+            </div>
+          </div> */}
+          <div className="lg:w-4/12 w-8/12">
+            <div className="flex flex-wrap gap-x-3 items-center justify-center">
+              <div className="btn-box lg:block hidden">
+                <Link
+                  href="#"
+                  className="t-btn text-white inline-flex rounded-[50px] duration-300 w-[165px] h-[60px] items-center justify-center px-3 py-2 gap-3 bg-main font-medium"
+                >
+                  Submit Property
+                </Link>
+              </div>
+              <div className="bell-icon bg-gray-200 rounded-full w-11 h-11 flex items-center justify-center">
+                <Bell width={20} height={20} />
+              </div>
+              <HoverCard>
+                <HoverCardTrigger><div className="profile-icons flex gap-x-3 border-2 border-br py-2 px-3 rounded-3xl">
+                <TableOfContents />
+                  <User />
+                </div></HoverCardTrigger>
+                <HoverCardContent className='p-4 shadow-2xl '>
+                  <ul className="flex gap-y-2 flex-col [&>li]:text-gray-500 [&>li]:font-normal [&>li]:text-sm [&>li:hover]:text-main duration-300 ">
+                    <li>
+                      <Link href="#">Switch to Hosting</Link>
+                    </li>
+                    <Separator />
+                    <li>
+                      <Link href="#">Messages</Link>
+                    </li>
+                    <li>
+                      <Link href="#">Reseervation</Link>
+                    </li>
+                    <li>
+                      <Link href="#">WishList</Link>
+                    </li>
+                    <Separator />
+                    <li>
+                      <Link href="#">Profile</Link>
+                    </li>
+                    <li>
+                      <Link href="#">Account</Link>
+                    </li>
+                    <li>
+                      <Link href="#">Help Center</Link>
+                    </li>
+                    <Separator />
+                    <li>
+                      <Link href="#">Language and translation</Link>
+                    </li>
+                    <li>
+                      <Link href="#">USD</Link>
+                    </li>
+                    <Separator />
+                    <li>
+                      <Link href="#">SIgnout</Link>
+                    </li>
+                  </ul>
+                </HoverCardContent>
+              </HoverCard>
             </div>
           </div>
         </div>

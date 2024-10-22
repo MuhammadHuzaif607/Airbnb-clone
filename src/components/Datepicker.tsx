@@ -2,6 +2,7 @@
 
 import { Button } from './ui/button';
 import React, { type FC, useState, useEffect, useRef } from 'react';
+import { Calendar as CalendarIcon,ArrowUp ,ArrowDown } from 'lucide-react';
 import {
   Popover,
   PopoverContent,
@@ -9,11 +10,7 @@ import {
 } from '@radix-ui/react-popover';
 import { Calendar } from './ui/calendar';
 import { Label } from '@radix-ui/react-label';
-import {
-  ChevronUpIcon,
-  ChevronDownIcon,
-  CheckIcon,
-} from '@radix-ui/react-icons';
+import { CheckIcon } from '@radix-ui/react-icons';
 import { cn } from '@/lib/utils';
 import {
   Select,
@@ -42,14 +39,6 @@ export interface DateRangePickerProps {
   /** Option for showing compare feature */
   showCompare?: boolean;
 }
-
-const formatDate = (date: Date, locale: string = 'en-us'): string => {
-  return date.toLocaleDateString(locale, {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-  });
-};
 
 const getDateAdjustedForTimezone = (dateInput: Date | string): Date => {
   if (typeof dateInput === 'string') {
@@ -346,12 +335,21 @@ export const DateRangePicker: FC<DateRangePickerProps> & {
       }}
     >
       <PopoverTrigger asChild>
-        <Button size={'lg'} variant="outline">
-          <div className="text-right">
+        <Button
+          size={'lg'}
+          variant="outline"
+          className=" w-[calc(31%)] px-7 border-0 justify-start border-br rounded-none border-r-[1px] flex flex-col items-start hover:bg-white"
+        >
+          <h6 className="text-base text-text font-medium  flex items-center">
+            CheckIn & Check Out <CalendarIcon className="ml-2 w-4 h-4 inline-block" />
+          </h6>
+          <div className="text-right text-sm text-gray-400">
             <div className="py-1">
-              <div>{`${formatDate(range.from, locale)}${
-                range.to != null ? ' - ' + formatDate(range.to, locale) : ''
-              }`}</div>
+              <div>
+                {`${formatDate(range.from, locale)}${
+                  range.to != null ? ' - ' + formatDate(range.to, locale) : ''
+                }`}
+              </div>
             </div>
             {rangeCompare != null && (
               <div className="opacity-60 text-xs -mt-1">
@@ -364,16 +362,12 @@ export const DateRangePicker: FC<DateRangePickerProps> & {
               </div>
             )}
           </div>
-          <div className="pl-1 opacity-60 -mr-2 scale-125">
-            {isOpen ? (
-              <ChevronUpIcon width={24} />
-            ) : (
-              <ChevronDownIcon width={24} />
-            )}
-          </div>
+          {/* <div className="pl-1 opacity-60 -mr-2 ">
+            {isOpen ? (<ArrowUp width={24} />) : (<ArrowDown width={24} />)}
+          </div> */}
         </Button>
       </PopoverTrigger>
-      <PopoverContent align={align} className="w-auto">
+      <PopoverContent align={align} className="w-auto z-[9999999] bg-white">
         <div className="flex py-2">
           <div className="flex">
             <div className="flex flex-col">
@@ -570,6 +564,14 @@ export const DateRangePicker: FC<DateRangePickerProps> & {
       </PopoverContent>
     </Popover>
   );
+};
+
+const formatDate = (date: Date, locale: string = 'en-us'): string => {
+  return date.toLocaleDateString(locale, {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  });
 };
 
 DateRangePicker.displayName = 'DateRangePicker';

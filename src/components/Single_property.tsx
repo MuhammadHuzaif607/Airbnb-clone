@@ -64,7 +64,7 @@ const Single_property = () => {
           </p>
         </div>
         <ul className="main-listing-cat flex flex-wrap gap-3 mt-3">
-          <li className="flex flex-row items-center gap-x-[10px]">
+          <li className="flex flex-row items-center gap-x-[10px]" key="1">
             <Image
               src="https://luckybackyards.com/staging/wp-content/themes/luckybackyard/assets/images/bed.png"
               width={24}
@@ -74,7 +74,7 @@ const Single_property = () => {
             3 Bedrooms
           </li>
 
-          <li className="flex flex-row items-center gap-x-[10px]">
+          <li className="flex flex-row items-center gap-x-[10px]" key="2">
             <Image
               src="https://luckybackyards.com/staging/wp-content/themes/luckybackyard/assets/images/bathroom.png"
               width={24}
@@ -84,7 +84,7 @@ const Single_property = () => {
             2 Bathrooms
           </li>
 
-          <li className="flex flex-row items-center gap-x-[10px]">
+          <li className="flex flex-row items-center gap-x-[10px]" key="3">
             <Image
               src="https://luckybackyards.com/staging/wp-content/themes/luckybackyard/assets/images/wifi.png"
               width={24}
@@ -95,11 +95,11 @@ const Single_property = () => {
           </li>
         </ul>
 
-        <div className="price-box flex gap-x-2 text-main mt-2">
+        <div className="price-box flex gap-x-2 text-main mt-2 items-center">
           <h4 className=" text-lg font-normal" data-original-price="280">
-            L25213.97
+            $200
           </h4>
-          <p className='text-base'>/ hourly</p>
+          <p className="text-base">/ hourly</p>
         </div>
       </div>
     </div>

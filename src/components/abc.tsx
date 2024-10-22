@@ -5,7 +5,6 @@ import {
   HoverCardTrigger,
 } from '@/components/ui/hover-card';
 import { useState } from 'react';
-import { Button } from './ui/button';
 
 export default function Page() {
   const [data, setData] = useState({
@@ -17,82 +16,182 @@ export default function Page() {
   return (
     <HoverCard>
       <HoverCardTrigger asChild>
-        <div className="top-content">
-          <h6>Who</h6>
-          <p id="summary">
-            <p>
-              Adults {data.Adults}, Childrens {data.Children}, Infant{' '}
-              {data.Infants}, Pets {data.Pets}
-            </p>
+        <div className="top-content w-[calc(31%)] px-7">
+          <h6 className="text-base text-text font-medium">Who</h6>
+          <p className="text-sm text-gray-400">
+            Adults {data.Adults}, Childrens {data.Children}, Infant{' '}
+            {data.Infants}, Pets {data.Pets}
           </p>
         </div>
       </HoverCardTrigger>
-      <HoverCardContent className="w-80">
-        <div className="down-content">
-          <div className="custom-number">
-            <div className="two-main-content">
-              <div className="content">
-                <h6>Adults</h6>
-                <p>Ages 13 or above</p>
-              </div>
+      <HoverCardContent className="w-80 py-0 px-5">
+        <div className="custom-number">
+          <div className=" flex justify-between py-5 border-slate-300 border-b-[1px]">
+            <div className="content">
+              <h6 className="font-medium text-lg text-black">Adults</h6>
+              <p className="text-sm text-text">Ages 13 or above</p>
             </div>
-
-            <div className="two-main-content">
-              <div className="content">
-                <h6>Children</h6>
-                <p>Ages 13 or below</p>
-              </div>
-              <div className="number">
-                <Button
-                  onClick={() => {
-                    setData((prevData) => {
+            <div className="flex items-center">
+              <button
+                className="border-[1px] border-black w-6 h-6  rounded-full flex items-center justify-center text-black cursor-pointer"
+                onClick={() => {
+                  setData((prevData) => {
+                    if (prevData.Adults > 0) {
                       return {
                         ...prevData,
-                        Adults: data.Adults + 1,
+                        Adults: prevData.Adults - 1,
                       };
-                    });
-                  }}
-                >
-                  +
-                </Button>
-                <p>{data.Adults}</p>
-                <Button
-                  onClick={() => {
-                    setData((prevData) => {
-                      if (data.Adults > 0) {
-                        return {
-                          ...prevData,
-                          Adults: data.Adults - 1,
-                        };
-                      }
+                    }
+                    return {
+                      ...prevData,
+                    };
+                  });
+                }}
+              >
+                -
+              </button>
+              <p className="w-10 text-center font-semibold text-text ">
+                {data.Adults}
+              </p>
+              <button
+                className="border-[1px] border-black w-6 h-6  rounded-full flex items-center justify-center text-black cursor-pointer"
+                onClick={() => {
+                  setData((prevData) => {
+                    return {
+                      ...prevData,
+                      Adults: prevData.Adults + 1,
+                    };
+                  });
+                }}
+              >
+                +
+              </button>
+            </div>
+          </div>
+          <div className=" flex justify-between py-5 border-slate-300 border-b-[1px]">
+            <div className="content">
+              <h6 className="font-medium text-lg text-black">Children</h6>
+              <p className="text-sm text-text">Ages 13 or above</p>
+            </div>
+            <div className="flex items-center">
+              <button
+                className="border-[1px] border-black w-6 h-6  rounded-full flex items-center justify-center text-black cursor-pointer"
+                onClick={() => {
+                  setData((prevData) => {
+                    if (prevData.Children > 0) {
                       return {
                         ...prevData,
+                        Children: prevData.Children - 1,
                       };
-                    });
-                  }}
-                >
-                  -
-                </Button>
-              </div>
+                    }
+                    return {
+                      ...prevData,
+                    };
+                  });
+                }}
+              >
+                -
+              </button>
+              <p className="w-10 text-center font-semibold text-text ">
+                {data.Children}
+              </p>
+              <button
+                className="border-[1px] border-black w-6 h-6  rounded-full flex items-center justify-center text-black cursor-pointer"
+                onClick={() => {
+                  setData((prevData) => {
+                    return {
+                      ...prevData,
+                      Children: prevData.Children + 1,
+                    };
+                  });
+                }}
+              >
+                +
+              </button>
             </div>
-
-            <div className="two-main-content">
-              <div className="content">
-                <h6>Infants</h6>
-                <p>Ages 13 or above</p>
-              </div>
+          </div>
+          <div className=" flex justify-between py-5 border-slate-300 border-b-[1px]">
+            <div className="content">
+              <h6 className="font-medium text-lg text-black">Infanst</h6>
+              <p className="text-sm text-text">Ages 13 or above</p>
             </div>
-
-            <div className="two-main-content">
-              <div className="content">
-                <h6>Pets</h6>
-                <p>Bringing a service animal?</p>
-              </div>
-              <div className="number">
-                <span></span>
-                <input type="text" name="pets" value="0"></input>
-                <span>+</span>
-              </div>
+            <div className="flex items-center">
+              <button
+                className="border-[1px] border-black w-6 h-6  rounded-full flex items-center justify-center text-black cursor-pointer"
+                onClick={() => {
+                  setData((prevData) => {
+                    if (prevData.Infants > 0) {
+                      return {
+                        ...prevData,
+                        Infants: prevData.Infants - 1,
+                      };
+                    }
+                    return {
+                      ...prevData,
+                    };
+                  });
+                }}
+              >
+                -
+              </button>
+              <p className="w-10 text-center font-semibold text-text ">
+                {data.Infants}
+              </p>
+              <button
+                className="border-[1px] border-black w-6 h-6  rounded-full flex items-center justify-center text-black cursor-pointer"
+                onClick={() => {
+                  setData((prevData) => {
+                    return {
+                      ...prevData,
+                      Infants: prevData.Infants + 1,
+                    };
+                  });
+                }}
+              >
+                +
+              </button>
+            </div>
+          </div>
+          <div className=" flex justify-between py-5 border-slate-300 border-b-[1px]">
+            <div className="content">
+              <h6 className="font-medium text-lg text-black">Pets</h6>
+              <p className="text-sm text-text">Ages 13 or above</p>
+            </div>
+            <div className="flex items-center">
+              <button
+                className="border-[1px] border-black w-6 h-6  rounded-full flex items-center justify-center text-black cursor-pointer"
+                onClick={() => {
+                  setData((prevData) => {
+                    if (prevData.Pets > 0) {
+                      return {
+                        ...prevData,
+                        Pets: prevData.Pets - 1,
+                      };
+                    }
+                    return {
+                      ...prevData,
+                    };
+                  });
+                }}
+              >
+                -
+              </button>
+              <p className="w-10 text-center font-semibold text-text ">
+                {data.Pets}
+              </p>
+              <button
+                className="border-[1px] border-black w-6 h-6  rounded-full flex items-center justify-center text-black cursor-pointer"
+                onClick={() => {
+                  setData((prevData) => {
+                    return {
+                      ...prevData,
+                      Pets: prevData.Pets + 1,
+                    };
+                  });
+                }}
+              >
+                +
+              </button>
             </div>
           </div>
         </div>
