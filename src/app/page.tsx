@@ -7,13 +7,12 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { X, Plus } from 'lucide-react';
 import Image from 'next/image';
-import Search from '@/components/Search';
-
+// import Search from '@/components/Search';
 
 const Page = () => {
   return (
     <>
-      <Search />
+      {/* <Search /> */}
       <div className="flex flex-wrap gap-y-3 py-20">
         <Singleproperty />
         <Singleproperty />

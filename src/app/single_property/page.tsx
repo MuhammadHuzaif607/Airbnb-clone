@@ -2,14 +2,14 @@ import React from 'react';
 import Image from 'next/image';
 import Single_property from '@/components/Single_property';
 import Property_form from '@/components/Property_form';
-import Search from '@/components/Search';
+// import Search from '@/components/Search';
 
 
 
 const Page = () => {
   return (
     <>
-    <Search />
+    {/* <Search /> */}
       <section >
         <div className="max-w-screen-xl mx-auto px-8">
           <div className="pb-5">

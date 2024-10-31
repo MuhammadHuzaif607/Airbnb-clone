@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import folder_empty from '../public/images/folder_empty.png';
+import folder_empty from '@/app/public/images/folder_empty.png'
 import Link from 'next/link';
 import { Ellipsis, Upload } from 'lucide-react';
 
