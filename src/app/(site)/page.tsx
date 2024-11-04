@@ -1,18 +1,18 @@
 import Singleproperty from '@/components/Single_property';
 import Suggestions from '@/components/Suggestions';
 import Blogs from '@/components/Blogs';
-import bin from '@/app/public/images/bin.png';
-import './globals.css';
+import bin from '@/images/bin.png';
+import '@/styles/globals.css';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { X, Plus } from 'lucide-react';
 import Image from 'next/image';
-// import Search from '@/components/Search';
+import Search from '@/components/Search';
 
 const Page = () => {
   return (
     <>
-      {/* <Search /> */}
+      <Search />
       <div className="flex flex-wrap gap-y-3 py-20">
         <Singleproperty />
         <Singleproperty />

@@ -17,7 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import payoptions from '@/app/public/images/pay_options.png';
+import payoptions from '@/images/pay_options.png';
 import Image from 'next/image';
 import { Input } from '@/components/ui/input';
 import Link from 'next/link';
