@@ -1,11 +1,28 @@
+'use client';
 import Link from 'next/link';
-import { Bell, User, TableOfContents } from 'lucide-react';
+// import { Bell, User, TableOfContents } from 'lucide-react';
+// import {
+//   HoverCard,
+//   HoverCardContent,
+//   HoverCardTrigger,
+// } from '@/components/ui/hover-card';
+// import { Separator } from '@/components/ui/separator';
+// import { Copy } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { SignInSchema } from '@/Schemas/LoginSchema';
+import { SignUpSchema } from '@/Schemas/SignUpSchema';
 import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from '@/components/ui/hover-card';
-import { Separator } from "@/components/ui/separator"
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+} from '@/components/ui/form';
+import { z } from 'zod';
 const Header = () => {
   const links = [
     {
@@ -25,6 +42,22 @@ const Header = () => {
       href: '/help-center',
     },
   ];
+  const form = useForm({
+    resolver: zodResolver(SignInSchema),
+  });
+
+  const SignUpform = useForm({
+    resolver: zodResolver(SignUpSchema),
+  });
+
+  function SignInSubmit(values: z.infer<typeof SignInSchema>) {
+    console.log(values);
+  }
+
+  function SignUpSubmit(values: z.infer<typeof SignUpSchema>) {
+    console.log(values);
+  }
+
   return (
     <header className="py-5">
       <div className="container mx-auto">
@@ -138,7 +171,7 @@ const Header = () => {
               </ul>
             </div>
           </div>
-          {/* <div className=" lg:w-4/12 w-8/12">
+          <div className=" lg:w-4/12 w-8/12">
             <div className="sign-area flex items-center justify-end gap-x-[22px]">
               <div className="icon-box lg:flex hidden"></div>
               <div className="sign-btn lg:block hidden relative group">
@@ -149,50 +182,165 @@ const Header = () => {
                   Sign In
                 </a>
                 <div className="two-btns absolute top-[32px] w-[132px] bg-white right-0  rounded-lg shadow-md opacity-0 z-[9] invisible duration-500 py-[15px] group-hover:opacity-100 group-hover:visible ">
-                  <button
-                    type="button"
-                    className="text-sm border-0 duration-300 flex items-center gap-x-[10px] w-full  mb-1 rounded-0 py-[5px] px-[10px] font-medium  hover:bg-secondary hover:text-primary "
-                    data-bs-toggle="modal"
-                    data-bs-target="#staticBackdrop2"
-                  >
-                    <span className="w-[24px] h-[24px] flex rounded-[100%] items-center justify-center bg-secondary">
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 16 16"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <button
+                        type="button"
+                        className="text-sm border-0 duration-300 flex items-center gap-x-[10px] w-full  mb-1 rounded-0 py-[5px] px-[10px] font-medium  hover:bg-secondary hover:text-primary "
+                        data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop2"
                       >
-                        <path
-                          d="M7.99998 7.79503C7.35833 7.79503 6.80903 7.56657 6.35208 7.10964C5.89514 6.65269 5.66667 6.10339 5.66667 5.46173C5.66667 4.82007 5.89514 4.27077 6.35208 3.81383C6.80903 3.35689 7.35833 3.12842 7.99998 3.12842C8.64164 3.12842 9.19094 3.35689 9.64788 3.81383C10.1048 4.27077 10.3333 4.82007 10.3333 5.46173C10.3333 6.10339 10.1048 6.65269 9.64788 7.10964C9.19094 7.56657 8.64164 7.79503 7.99998 7.79503ZM3 12.872V11.3899C3 11.0634 3.08868 10.7611 3.26603 10.4829C3.44338 10.2047 3.68034 9.9908 3.97692 9.84122C4.63589 9.51814 5.30064 9.27583 5.97115 9.1143C6.64166 8.95277 7.31794 8.872 7.99998 8.872C8.68203 8.872 9.35831 8.95277 10.0288 9.1143C10.6993 9.27583 11.3641 9.51814 12.023 9.84122C12.3196 9.9908 12.5566 10.2047 12.7339 10.4829C12.9113 10.7611 13 11.0634 13 11.3899V12.872H3ZM3.99998 11.872H12V11.3899C12 11.2549 11.9609 11.1299 11.8827 11.0149C11.8045 10.9 11.6983 10.8062 11.5641 10.7335C10.9897 10.4506 10.4041 10.2363 9.80712 10.0906C9.21016 9.94483 8.60778 9.87197 7.99998 9.87197C7.39218 9.87197 6.78981 9.94483 6.19285 10.0906C5.59589 10.2363 5.01024 10.4506 4.43588 10.7335C4.30169 10.8062 4.1955 10.9 4.1173 11.0149C4.03909 11.1299 3.99998 11.2549 3.99998 11.3899V11.872ZM7.99998 6.79507C8.36665 6.79507 8.68054 6.66451 8.94165 6.4034C9.20276 6.14229 9.33332 5.8284 9.33332 5.46173C9.33332 5.09507 9.20276 4.78118 8.94165 4.52007C8.68054 4.25896 8.36665 4.1284 7.99998 4.1284C7.63332 4.1284 7.31943 4.25896 7.05832 4.52007C6.79721 4.78118 6.66665 5.09507 6.66665 5.46173C6.66665 5.8284 6.79721 6.14229 7.05832 6.4034C7.31943 6.66451 7.63332 6.79507 7.99998 6.79507Z"
-                          fill="#484848"
-                        ></path>
-                      </svg>
-                    </span>
-                    Sign Up
-                  </button>
-                  <button
-                    type="button"
-                    className="text-sm border-0 duration-300 flex items-center gap-x-[10px] w-full  mb-1 rounded-0 py-[5px] px-[10px] hover:bg-secondary hover:text-primary font-medium"
-                    data-bs-toggle="modal"
-                    data-bs-target="#staticBackdrop"
-                  >
-                    <span className="w-[24px] h-[24px] flex rounded-[100%] items-center justify-center bg-secondary">
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 16 16"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
+                        <span className="w-[24px] h-[24px] flex rounded-[100%] items-center justify-center bg-secondary">
+                          <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M7.99998 7.79503C7.35833 7.79503 6.80903 7.56657 6.35208 7.10964C5.89514 6.65269 5.66667 6.10339 5.66667 5.46173C5.66667 4.82007 5.89514 4.27077 6.35208 3.81383C6.80903 3.35689 7.35833 3.12842 7.99998 3.12842C8.64164 3.12842 9.19094 3.35689 9.64788 3.81383C10.1048 4.27077 10.3333 4.82007 10.3333 5.46173C10.3333 6.10339 10.1048 6.65269 9.64788 7.10964C9.19094 7.56657 8.64164 7.79503 7.99998 7.79503ZM3 12.872V11.3899C3 11.0634 3.08868 10.7611 3.26603 10.4829C3.44338 10.2047 3.68034 9.9908 3.97692 9.84122C4.63589 9.51814 5.30064 9.27583 5.97115 9.1143C6.64166 8.95277 7.31794 8.872 7.99998 8.872C8.68203 8.872 9.35831 8.95277 10.0288 9.1143C10.6993 9.27583 11.3641 9.51814 12.023 9.84122C12.3196 9.9908 12.5566 10.2047 12.7339 10.4829C12.9113 10.7611 13 11.0634 13 11.3899V12.872H3ZM3.99998 11.872H12V11.3899C12 11.2549 11.9609 11.1299 11.8827 11.0149C11.8045 10.9 11.6983 10.8062 11.5641 10.7335C10.9897 10.4506 10.4041 10.2363 9.80712 10.0906C9.21016 9.94483 8.60778 9.87197 7.99998 9.87197C7.39218 9.87197 6.78981 9.94483 6.19285 10.0906C5.59589 10.2363 5.01024 10.4506 4.43588 10.7335C4.30169 10.8062 4.1955 10.9 4.1173 11.0149C4.03909 11.1299 3.99998 11.2549 3.99998 11.3899V11.872ZM7.99998 6.79507C8.36665 6.79507 8.68054 6.66451 8.94165 6.4034C9.20276 6.14229 9.33332 5.8284 9.33332 5.46173C9.33332 5.09507 9.20276 4.78118 8.94165 4.52007C8.68054 4.25896 8.36665 4.1284 7.99998 4.1284C7.63332 4.1284 7.31943 4.25896 7.05832 4.52007C6.79721 4.78118 6.66665 5.09507 6.66665 5.46173C6.66665 5.8284 6.79721 6.14229 7.05832 6.4034C7.31943 6.66451 7.63332 6.79507 7.99998 6.79507Z"
+                              fill="#484848"
+                            ></path>
+                          </svg>
+                        </span>
+                        Log In
+                      </button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-md p-0">
+                      <div
+                        style={{
+                          backgroundImage:
+                            'url("https://luckybackyards.com/wp-content/themes/luckybackyard/assets/images/popup-bg.png");',
+                        }}
+                        className="bg-no-repeat bg-cover py-8 text-center"
                       >
-                        <path
-                          d="M4.66663 9.07705C4.36834 9.07705 4.11429 8.97214 3.90447 8.76231C3.69464 8.55249 3.58973 8.29844 3.58973 8.00015C3.58973 7.70186 3.69464 7.4478 3.90447 7.23798C4.11429 7.02816 4.36834 6.92325 4.66663 6.92325C4.96492 6.92325 5.21898 7.02816 5.4288 7.23798C5.63862 7.4478 5.74353 7.70186 5.74353 8.00015C5.74353 8.29844 5.63862 8.55249 5.4288 8.76231C5.21898 8.97214 4.96492 9.07705 4.66663 9.07705ZM4.66663 11.6668C3.64954 11.6668 2.78417 11.31 2.0705 10.5963C1.35683 9.88261 1 9.01724 1 8.00015C1 6.98306 1.35683 6.11768 2.0705 5.40401C2.78417 4.69034 3.64954 4.3335 4.66663 4.3335C5.38116 4.3335 6.02731 4.5179 6.60508 4.88671C7.18286 5.25551 7.62388 5.73777 7.92815 6.3335H13.9295L15.5961 8.00015L13.032 10.5514L11.7949 9.62191L10.5256 10.5642L9.22435 9.6668H7.92815C7.62388 10.2582 7.18286 10.7394 6.60508 11.1104C6.02731 11.4813 5.38116 11.6668 4.66663 11.6668ZM4.66663 10.6668C5.30596 10.6668 5.85959 10.4737 6.32753 10.0873C6.79548 9.701 7.10082 9.22749 7.24355 8.66681H9.53845L10.4987 9.33091L11.8013 8.37836L12.9333 9.24373L14.1769 8.00015L13.5102 7.33348H7.24355C7.10082 6.7728 6.79548 6.2993 6.32753 5.91296C5.85959 5.52664 5.30596 5.33348 4.66663 5.33348C3.9333 5.33348 3.30552 5.59459 2.7833 6.11681C2.26108 6.63904 1.99997 7.26681 1.99997 8.00015C1.99997 8.73348 2.26108 9.36126 2.7833 9.88348C3.30552 10.4057 3.9333 10.6668 4.66663 10.6668Z"
-                          fill="#484848"
-                        ></path>
-                      </svg>
-                    </span>{' '}
-                    Log In{' '}
-                  </button>
+                        <h1>Log in to your account</h1>
+                      </div>
+                      <Form {...form}>
+                        <form
+                          onSubmit={form.handleSubmit(SignInSubmit)}
+                          className="space-y-8"
+                        >
+                          <FormField
+                            control={form.control}
+                            name="identifier"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Username or Email address</FormLabel>
+                                <FormControl>
+                                  <Input
+                                    placeholder="Username or email address"
+                                    {...field}
+                                    type="text"
+                                  />
+                                </FormControl>
+                              </FormItem>
+                            )}
+                          />
+                          <FormField
+                            control={form.control}
+                            name="password"
+                            type="password"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>password</FormLabel>
+                                <FormControl>
+                                  <Input placeholder="Password" {...field} />
+                                </FormControl>
+                              </FormItem>
+                            )}
+                          />
+                          <Button type="submit">Submit</Button>
+                        </form>
+                      </Form>
+                    </DialogContent>
+                  </Dialog>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <button
+                        type="button"
+                        className="text-sm border-0 duration-300 flex items-center gap-x-[10px] w-full  mb-1 rounded-0 py-[5px] px-[10px] hover:bg-secondary hover:text-primary font-medium"
+                        data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop"
+                      >
+                        <span className="w-[24px] h-[24px] flex rounded-[100%] items-center justify-center bg-secondary">
+                          <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M4.66663 9.07705C4.36834 9.07705 4.11429 8.97214 3.90447 8.76231C3.69464 8.55249 3.58973 8.29844 3.58973 8.00015C3.58973 7.70186 3.69464 7.4478 3.90447 7.23798C4.11429 7.02816 4.36834 6.92325 4.66663 6.92325C4.96492 6.92325 5.21898 7.02816 5.4288 7.23798C5.63862 7.4478 5.74353 7.70186 5.74353 8.00015C5.74353 8.29844 5.63862 8.55249 5.4288 8.76231C5.21898 8.97214 4.96492 9.07705 4.66663 9.07705ZM4.66663 11.6668C3.64954 11.6668 2.78417 11.31 2.0705 10.5963C1.35683 9.88261 1 9.01724 1 8.00015C1 6.98306 1.35683 6.11768 2.0705 5.40401C2.78417 4.69034 3.64954 4.3335 4.66663 4.3335C5.38116 4.3335 6.02731 4.5179 6.60508 4.88671C7.18286 5.25551 7.62388 5.73777 7.92815 6.3335H13.9295L15.5961 8.00015L13.032 10.5514L11.7949 9.62191L10.5256 10.5642L9.22435 9.6668H7.92815C7.62388 10.2582 7.18286 10.7394 6.60508 11.1104C6.02731 11.4813 5.38116 11.6668 4.66663 11.6668ZM4.66663 10.6668C5.30596 10.6668 5.85959 10.4737 6.32753 10.0873C6.79548 9.701 7.10082 9.22749 7.24355 8.66681H9.53845L10.4987 9.33091L11.8013 8.37836L12.9333 9.24373L14.1769 8.00015L13.5102 7.33348H7.24355C7.10082 6.7728 6.79548 6.2993 6.32753 5.91296C5.85959 5.52664 5.30596 5.33348 4.66663 5.33348C3.9333 5.33348 3.30552 5.59459 2.7833 6.11681C2.26108 6.63904 1.99997 7.26681 1.99997 8.00015C1.99997 8.73348 2.26108 9.36126 2.7833 9.88348C3.30552 10.4057 3.9333 10.6668 4.66663 10.6668Z"
+                              fill="#484848"
+                            ></path>
+                          </svg>
+                        </span>{' '}
+                        Sign Up
+                      </button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-md">
+                      <div
+                        style={{
+                          backgroundImage:
+                            'url("https://luckybackyards.com/wp-content/themes/luckybackyard/assets/images/popup-bg.png");',
+                        }}
+                        className="bg-no-repeat bg-cover py-8 text-center"
+                      >
+                        <h1>Create your account</h1>
+                      </div>
+                      <Form {...SignUpform}>
+                        <form
+                          onSubmit={SignUpform.handleSubmit(SignUpSubmit)}
+                          className="space-y-8"
+                        >
+                          <FormField
+                            control={SignUpform.control}
+                            name="username"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>User Name</FormLabel>
+                                <FormControl>
+                                  <Input
+                                    placeholder="User Name"
+                                    {...field}
+                                    type="text"
+                                  />
+                                </FormControl>
+                              </FormItem>
+                            )}
+                          />
+                          <FormField
+                            control={SignUpform.control}
+                            name="email"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Email</FormLabel>
+                                <FormControl>
+                                  <Input placeholder="Email" {...field} />
+                                </FormControl>
+                              </FormItem>
+                            )}
+                          />
+                          <FormField
+                            control={SignUpform.control}
+                            name="password"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Password</FormLabel>
+                                <FormControl>
+                                  <Input placeholder="Password" {...field} />
+                                </FormControl>
+                              </FormItem>
+                            )}
+                          />
+                          <Button type="submit">Submit</Button>
+                        </form>
+                      </Form>
+                    </DialogContent>
+                  </Dialog>
                 </div>
               </div>
               <div className="btn-box lg:block hidden">
@@ -207,8 +355,8 @@ const Header = () => {
                 <i className="fas fa-bars"></i>
               </div>
             </div>
-          </div> */}
-          <div className="lg:w-4/12 w-8/12">
+          </div>
+          {/* <div className="lg:w-4/12 w-8/12">
             <div className="flex flex-wrap gap-x-3 items-center justify-center">
               <div className="btn-box lg:block hidden">
                 <Link
@@ -266,7 +414,7 @@ const Header = () => {
                 </HoverCardContent>
               </HoverCard>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </header>
