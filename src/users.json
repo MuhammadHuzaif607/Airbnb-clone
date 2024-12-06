@@ -1,0 +1,30 @@
+{
+  "users": [
+    {
+      "name": "User1",
+      "messages": [
+        {
+          "date": "2024-07-13",
+          "message": "I'm interested in React projects to work on for my portfolio."
+        },
+        {
+          "date": "2024-08-21",
+          "message": "I'm working on Python projects involving encryption and decryption using the Vigenère cipher."
+        }
+      ]
+    },
+    {
+      "name": "User2",
+      "messages": [
+        {
+          "date": "2024-09-24",
+          "message": "I'm working on an API for verifying user accounts based on a verification code in a MongoDB-based system."
+        },
+        {
+          "date": "2024-11-03",
+          "message": "I'm working on a step form with substeps in a project and handling logic for navigation with a 'prev' button."
+        }
+      ]
+    }
+  ]
+}
