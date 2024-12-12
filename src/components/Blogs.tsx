@@ -7,6 +7,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
+import Img from '@/images/Pickleball.jpg';
 
 const Blogs = () => {
   return (
@@ -28,12 +29,7 @@ const Blogs = () => {
               style={{ width: '100%', display: 'inline-block' }}
             >
               <Link href="https://luckybackyards.com/staging/fantasy-house-booking-destinations-you-can-visit/">
-                <Image
-                  src="https://luckybackyards.com/staging/wp-content/uploads/2024/03/latest-post-02.png"
-                  alt=""
-                  width={300}
-                  height={300}
-                ></Image>
+                <Image src={Img} alt="" width={300} height={300} className='rounded-lg'></Image>
               </Link>
               <ul className="flex flex-wrap gap-2 py-2">
                 <li>
@@ -90,12 +86,7 @@ const Blogs = () => {
               style={{ width: '100%', display: 'inline-block' }}
             >
               <Link href="https://luckybackyards.com/staging/fantasy-house-booking-destinations-you-can-visit/">
-                <Image
-                  src="https://luckybackyards.com/staging/wp-content/uploads/2024/03/latest-post-02.png"
-                  alt=""
-                  width={300}
-                  height={300}
-                ></Image>
+                <Image src={Img} alt="" width={300} height={300} className='rounded-lg'></Image>
               </Link>
               <ul className="flex flex-wrap gap-2 py-2">
                 <li>
@@ -152,12 +143,7 @@ const Blogs = () => {
               style={{ width: '100%', display: 'inline-block' }}
             >
               <Link href="https://luckybackyards.com/staging/fantasy-house-booking-destinations-you-can-visit/">
-                <Image
-                  src="https://luckybackyards.com/staging/wp-content/uploads/2024/03/latest-post-02.png"
-                  alt=""
-                  width={300}
-                  height={300}
-                ></Image>
+                <Image src={Img} alt="" width={300} height={300} className='rounded-lg'></Image>
               </Link>
               <ul className="flex flex-wrap gap-2 py-2">
                 <li>
@@ -214,12 +200,7 @@ const Blogs = () => {
               style={{ width: '100%', display: 'inline-block' }}
             >
               <Link href="https://luckybackyards.com/staging/fantasy-house-booking-destinations-you-can-visit/">
-                <Image
-                  src="https://luckybackyards.com/staging/wp-content/uploads/2024/03/latest-post-02.png"
-                  alt=""
-                  width={300}
-                  height={300}
-                ></Image>
+                <Image src={Img} alt="" width={300} height={300} className='rounded-lg'></Image>
               </Link>
               <ul className="flex flex-wrap gap-2 py-2">
                 <li>
@@ -276,12 +257,7 @@ const Blogs = () => {
               style={{ width: '100%', display: 'inline-block' }}
             >
               <Link href="https://luckybackyards.com/staging/fantasy-house-booking-destinations-you-can-visit/">
-                <Image
-                  src="https://luckybackyards.com/staging/wp-content/uploads/2024/03/latest-post-02.png"
-                  alt=""
-                  width={300}
-                  height={300}
-                ></Image>
+                <Image src={Img} alt="" width={300} height={300} className='rounded-lg'></Image>
               </Link>
               <ul className="flex flex-wrap gap-2 py-2">
                 <li>
@@ -338,12 +314,7 @@ const Blogs = () => {
               style={{ width: '100%', display: 'inline-block' }}
             >
               <Link href="https://luckybackyards.com/staging/fantasy-house-booking-destinations-you-can-visit/">
-                <Image
-                  src="https://luckybackyards.com/staging/wp-content/uploads/2024/03/latest-post-02.png"
-                  alt=""
-                  width={300}
-                  height={300}
-                ></Image>
+                <Image src={Img} alt="" width={300} height={300} className='rounded-lg'></Image>
               </Link>
               <ul className="flex flex-wrap gap-2 py-2">
                 <li>
@@ -400,12 +371,7 @@ const Blogs = () => {
               style={{ width: '100%', display: 'inline-block' }}
             >
               <Link href="https://luckybackyards.com/staging/fantasy-house-booking-destinations-you-can-visit/">
-                <Image
-                  src="https://luckybackyards.com/staging/wp-content/uploads/2024/03/latest-post-02.png"
-                  alt=""
-                  width={300}
-                  height={300}
-                ></Image>
+                <Image src={Img} alt="" width={300} height={300} className='rounded-lg'></Image>
               </Link>
               <ul className="flex flex-wrap gap-2 py-2">
                 <li>

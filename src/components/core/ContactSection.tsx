@@ -1,7 +1,7 @@
 import { ListFilter } from 'lucide-react';
 import React from 'react';
 import Users from '@/users.json';
-import Chat from '@/public/images/chat-pic.png';
+import Chat from '@/images/chat-pic.png';
 import Image from 'next/image';
 
 const ContactSection = () => {

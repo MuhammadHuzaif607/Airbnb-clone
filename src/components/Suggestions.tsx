@@ -7,6 +7,7 @@ import {
 } from '@/components/ui/carousel';
 import Link from 'next/link';
 import Image from 'next/image';
+import Suggestion_img from "@/images/judith.jpg"
 
 const Suggestions = () => {
   return (
@@ -26,7 +27,7 @@ const Suggestions = () => {
             <Link href="https://luckybackyards.com/staging/property/demetriou-paradisos-sea-view/">
               <div className="img-box relative">
                 <Image
-                  src="https://luckybackyards.com/staging/wp-content/uploads/2024/06/villa3-1-250x220-1.jpeg"
+                  src={Suggestion_img}
                   width={142}
                   height={300}
                   alt=""
@@ -56,7 +57,7 @@ const Suggestions = () => {
             <Link href="https://luckybackyards.com/staging/property/demetriou-paradisos-sea-view/">
               <div className="img-box relative">
                 <Image
-                  src="https://luckybackyards.com/staging/wp-content/uploads/2024/06/villa3-1-250x220-1.jpeg"
+                  src={Suggestion_img}
                   width={142}
                   height={300}
                   alt=""
@@ -86,7 +87,7 @@ const Suggestions = () => {
             <Link href="https://luckybackyards.com/staging/property/demetriou-paradisos-sea-view/">
               <div className="img-box relative">
                 <Image
-                  src="https://luckybackyards.com/staging/wp-content/uploads/2024/06/villa3-1-250x220-1.jpeg"
+                  src={Suggestion_img}
                   width={142}
                   height={300}
                   alt=""
@@ -116,7 +117,7 @@ const Suggestions = () => {
             <Link href="https://luckybackyards.com/staging/property/demetriou-paradisos-sea-view/">
               <div className="img-box relative">
                 <Image
-                  src="https://luckybackyards.com/staging/wp-content/uploads/2024/06/villa3-1-250x220-1.jpeg"
+                  src={Suggestion_img}
                   width={142}
                   height={300}
                   alt=""
@@ -146,7 +147,7 @@ const Suggestions = () => {
             <Link href="https://luckybackyards.com/staging/property/demetriou-paradisos-sea-view/">
               <div className="img-box relative">
                 <Image
-                  src="https://luckybackyards.com/staging/wp-content/uploads/2024/06/villa3-1-250x220-1.jpeg"
+                  src={Suggestion_img}
                   width={142}
                   height={300}
                   alt=""
@@ -176,7 +177,7 @@ const Suggestions = () => {
             <Link href="https://luckybackyards.com/staging/property/demetriou-paradisos-sea-view/">
               <div className="img-box relative">
                 <Image
-                  src="https://luckybackyards.com/staging/wp-content/uploads/2024/06/villa3-1-250x220-1.jpeg"
+                  src={Suggestion_img}
                   width={142}
                   height={300}
                   alt=""
@@ -206,7 +207,7 @@ const Suggestions = () => {
             <Link href="https://luckybackyards.com/staging/property/demetriou-paradisos-sea-view/">
               <div className="img-box relative">
                 <Image
-                  src="https://luckybackyards.com/staging/wp-content/uploads/2024/06/villa3-1-250x220-1.jpeg"
+                  src={Suggestion_img}
                   width={142}
                   height={300}
                   alt=""

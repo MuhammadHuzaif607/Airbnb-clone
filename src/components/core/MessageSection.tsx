@@ -1,8 +1,8 @@
 import { Ellipsis, Link, Mic } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react';
-import Chat from '@/public/images/chat-pic.png';
-import Profile from '@/public/images/profile.png';
+import Chat from '@/images/chat-pic.png';
+import Profile from '@/images/profile.png';
 
 const MessageSection = () => {
   return (

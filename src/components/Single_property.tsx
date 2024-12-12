@@ -1,9 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import Property_Img from '@/images/learning-for-guests-img-03.png';
+import Bed from '@/images/bed.png';
+import Bathroom from '@/images/bathroom.png';
+import Wifi from '@/images/wifi.png';
+
 const Single_property = () => {
   return (
     <div className="main-icon-img-box w-3/12 px-3">
-      <div className="img-box relative ">
+      <div className="img-box relative">
         <div className="img-box-content absolute top-[10px] flex justify-between flex-nowrap items-center w-full  px-3 ">
           <h6 className="text-text p-[10px] rounded-full bg-white font-semibold text-xs">
             Guest Favorite
@@ -31,7 +36,7 @@ const Single_property = () => {
         </div>
         <a href="https://luckybackyards.com/staging/property/amazing-private-pool-alpaca-experience/">
           <Image
-            src="https://luckybackyards.com/staging/wp-content/uploads/2024/03/learning-for-guests-img-03.png"
+            src={Property_Img}
             width={236}
             height={205}
             alt="Picture of the author"
@@ -65,36 +70,19 @@ const Single_property = () => {
         </div>
         <ul className="main-listing-cat flex flex-wrap gap-3 mt-3">
           <li className="flex flex-row items-center gap-x-[10px]" key="1">
-            <Image
-              src="https://luckybackyards.com/staging/wp-content/themes/luckybackyard/assets/images/bed.png"
-              width={24}
-              height={24}
-              alt="Picture of the author"
-            />
-            3 Bedrooms
+            <Image src={Bed} width={24} height={24} alt="Bed" />3 Bedrooms
           </li>
 
           <li className="flex flex-row items-center gap-x-[10px]" key="2">
-            <Image
-              src="https://luckybackyards.com/staging/wp-content/themes/luckybackyard/assets/images/bathroom.png"
-              width={24}
-              height={24}
-              alt="Picture of the author"
-            />
-            2 Bathrooms
+            <Image src={Bathroom} width={24} height={24} alt="Bathroom" />2
+            Bathrooms
           </li>
 
           <li className="flex flex-row items-center gap-x-[10px]" key="3">
-            <Image
-              src="https://luckybackyards.com/staging/wp-content/themes/luckybackyard/assets/images/wifi.png"
-              width={24}
-              height={24}
-              alt="Picture of the author"
-            />
+            <Image src={Wifi} width={24} height={24} alt="Wifi" />
             Wifi
           </li>
         </ul>
-
         <div className="price-box flex gap-x-2 text-main mt-2 items-center">
           <h4 className=" text-lg font-normal" data-original-price="280">
             $200
